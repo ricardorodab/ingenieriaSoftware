@@ -12,6 +12,10 @@ and open the template in the editor.
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     </head>
     <body>
+        <h:form>
+        <p>Eres #{login.email}</p>
+        <h:commandLink action="#{login.logout}" value="Logout"></h:commandLink>
+    </h:form>
         <h2>Aquí va la página principal del proyecto</h2>
           <h:link value="perfil" outcome="admin.xhtml" />
     </body>
