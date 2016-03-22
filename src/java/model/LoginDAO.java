@@ -12,14 +12,14 @@ import java.sql.SQLException;
  
 public class LoginDAO {
  
-    public static boolean validate(String user, String password) {
+    public static boolean validate(String email, String password) {
         Connection con = null;
         PreparedStatement ps = null;
  
         try {
             con = DataConnect.getConnection();
-            ps = con.prepareStatement("Select uname, password from Users where uname = ? and password = ?");
-            ps.setString(1, user);
+            ps = con.prepareStatement("Select email, password from login where email = ? and password = ?");
+            ps.setString(1, email);
             ps.setString(2, password);
  
             ResultSet rs = ps.executeQuery();
