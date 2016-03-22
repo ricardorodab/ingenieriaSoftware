@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 22-mar-2016 12:47:12 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="model.Login" table="login" schema="public" optimistic-lock="version">
+        <id name="idLogin" type="int">
+            <column name="id_login" />
+            <generator class="assigned" />
+        </id>
+        <property name="email" type="string">
+            <column name="email" length="250" not-null="true" unique="true" />
+        </property>
+        <property name="password" type="string">
+            <column name="password" length="250" not-null="true" />
+        </property>
+        <set name="usuarioLogins" table="usuario_login" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="id_login_usuario_login" not-null="true" />
+            </key>
+            <one-to-many class="model.UsuarioLogin" />
+        </set>
+    </class>
+</hibernate-mapping>
